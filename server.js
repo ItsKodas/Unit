@@ -45,4 +45,4 @@ client.on('message', msg => {
 
 function delayed() {
 	require('./auto/recruitment.js')(client)
-} setTimeout(delayed, 1000)
+} setTimeout(delayed, 2000)

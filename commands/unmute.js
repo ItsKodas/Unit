@@ -5,7 +5,7 @@ module.exports = function (client, cmd) {
     if (!cmd.member.roles.cache.some(role => role.name === 'Staff')) return
 
 
-    if (cmd.msg.mentions.users.map(user => user).length === 0) return cmd.msg.channel.send({ embed: { "description": "❌ You need to Mention the User/s to Unmute them!", "color": "#f53b3b" } })
+    if (cmd.msg.mentions.users.map(user => user).length === 0) return cmd.msg.channel.send({ embed: { "description": "❌ You need to Mention the User/s to Unmute them!", "color": "#f53b3b" } }).then(msg => msg.delete({ timeout: 5000 }))
 
 
     for (user of cmd.msg.mentions.users.map(user => user)) {
