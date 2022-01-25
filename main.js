@@ -13,7 +13,8 @@ client.login(process.env.token)
 
 client.on('ready', async () => {
 	console.log(`Logged in as ${client.user.tag}!`)
-	
+
+	require('./auto/monitor.js')(client)
 	require('./auto/recruitment.js')(client)
 })
 
