@@ -5,7 +5,7 @@ module.exports = function (client, cmd) {
     if (!cmd.member.roles.cache.some(role => role.name === 'Staff')) return
 
 
-    if (cmd.msg.mentions.users.map(user => user).length === 0) return cmd.msg.channel.send({ embed: { "description": "❌ You need to Mention the User/s to Unmute them!", "color": "#f53b3b" } }).then(msg => msg.delete({ timeout: 5000 }))
+    if (cmd.msg.mentions.users.map(user => user).length === 0) return cmd.msg.channel.send({ embeds: [{ "description": "❌ You need to Mention the User/s to Unmute them!", "color": "#f53b3b" }] }).then(msg => msg.delete({ timeout: 5000 }))
 
 
     for (user of cmd.msg.mentions.users.map(user => user)) {
@@ -24,23 +24,23 @@ module.exports = function (client, cmd) {
         }
 
         return cmd.msg.channel.send({
-            embed: {
+            embeds: [{
                 "description": `✅ The Following Users have been Unmuted:\n\n${userList}`,
                 "color": "#48cf4b",
                 "footer": {
                     "text": `Executed by ${cmd.member.user.tag}`
                 }
-            }
+            }]
         })
     } else {
         return cmd.msg.channel.send({
-            embed: {
+            embeds: [{
                 "description": `✅ <@${unmuted[0]}> has been Unmuted!`,
                 "color": "#48cf4b",
                 "footer": {
                     "text": `Executed by ${cmd.member.user.tag}`
                 }
-            }
+            }]
         })
     }
 }

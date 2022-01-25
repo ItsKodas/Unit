@@ -1,0 +1,19 @@
+{
+  "name": "unit",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsKodas/Unit.git"
+  },
+  "author": "Jessica Lancelot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ItsKodas/Unit/issues"
+  },
+  "homepage": "https://github.com/ItsKodas/Unit#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "gamedig": "^3.0.8"
+  }
+}

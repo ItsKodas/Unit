@@ -6,7 +6,7 @@ module.exports = function (client, cmd) {
     cmd.msg.delete()
 
 
-    if (cmd.msg.mentions.users.map(user => user).length === 0) return cmd.msg.channel.send({ embed: { "description": "❌ You need to Mention the User/s to Mute them!", "color": "#f53b3b" } }).then(msg => msg.delete({ timeout: 5000 }))
+    if (cmd.msg.mentions.users.map(user => user).length === 0) return cmd.msg.channel.send({ embeds: [{ "description": "❌ You need to Mention the User/s to Mute them!", "color": "#f53b3b" }] }).then(msg => msg.delete({ timeout: 5000 }))
 
 
     for (user of cmd.msg.mentions.users.map(user => user)) {
@@ -25,23 +25,23 @@ module.exports = function (client, cmd) {
         }
 
         return cmd.msg.channel.send({
-            embed: {
+            embeds: [{
                 "description": `✅ The Following Users have been Muted:\n\n${userList}`,
                 "color": "#48cf4b",
                 "footer": {
                     "text": `Executed by ${cmd.member.user.tag}`
                 }
-            }
+            }]
         })
     } else {
         return cmd.msg.channel.send({
-            embed: {
+            embeds: [{
                 "description": `✅ <@${muted[0]}> has been Muted!`,
                 "color": "#48cf4b",
                 "footer": {
                     "text": `Executed by ${cmd.member.user.tag}`
                 }
-            }
+            }]
         })
     }
 }
