@@ -62,13 +62,14 @@ app.listen(process.env.port, () => console.log(`Listening on port ${process.env.
 
 app.get('/', (req, res) => {
 	var Packs = []
-	fs.readdirSync('./lib').forEach(file => Packs.push(file.split('_')[1].split('.')[0]))
+	fs.readdirSync('./lib/mods').forEach(file => Packs.push(file.split('_')[1].split('.')[0]))
 	res.render('index', { Packs: Packs })
 })
 
 app.get('/discord', (req, res) => res.redirect('https://discord.gg/qf8htxxMKD'))
+app.get(`/tfr`, (req, res) => res.download(`./lib/task_force_radio.ts3_plugin`))
 
-fs.readdirSync('./lib').forEach(file => {
+fs.readdirSync('./lib/mods').forEach(file => {
 	var url = file.split('_')[1].split('.')[0]
-	app.get(`/${url}`, (req, res) => res.download(`./lib/${file}`))
+	app.get(`/${url}`, (req, res) => res.download(`./lib/mods/${file}`))
 })
